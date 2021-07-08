@@ -1,5 +1,34 @@
 <html xmlns:th="http://www.w3.org/1999/xhtml">
 
 <h1>hello!</h1>
-<h1 th:text="${name}">ttt</h1>
+<!--<h1 th:text="${name}">ttt</h1>-->
+<body>
+
+City List
+<hr>
+<table border="1">
+
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>操作</th>
+    </tr>
+    <tr th:each="city:${list}">
+        <!---EL JSTL-->
+        <td th:text="${city.id}"></td>
+        <td th:text="${city.name}"></td>
+        <td ><a href="javascript:;" onclick="del(this);">删除</a> </td>
+    </tr>
+</table>
+</body>
+<script type="text/javascript">
+    function del(obj){
+        alert(obj);
+        var oParent = obj.parentNode.parentNode;
+        // console.log(oParent)
+        document.getElementById('table').removeChild(oParent);
+    }
+
+
+</script>
 </html>

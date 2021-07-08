@@ -1,0 +1,15 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<h1>hello!</h1>
+<h1 th:text="${result}"></h1>
+
+<hr>
+<form action="/user/add" method="post">
+
+    ID:<input name="id" type="text">
+    <br/>
+    name:<input name="name" type="text">
+    <br>
+    <input type="submit" value="submit">
+</form>
+</html>

@@ -1,7 +1,9 @@
 package com.mashibing.springboot.firstspringboot.service.impl;
 
+import com.mashibing.springboot.firstspringboot.dao.CityRepository;
 import com.mashibing.springboot.firstspringboot.domain.City;
 import com.mashibing.springboot.firstspringboot.service.CityService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +22,9 @@ import java.util.stream.Collectors;
 public class CityServiceImpl implements CityService {
 
     Map map = new ConcurrentHashMap<String, City>();
+
+    @Autowired
+    CityRepository cityRepository;
 
     private City findCityByid(Integer id) {
         if (id == null) {
@@ -43,9 +48,15 @@ public class CityServiceImpl implements CityService {
         }
     }
 
+//    @Override
+//    public List<City> findAll() {
+//        return (List<City>) map.values().stream().collect(Collectors.toList());
+//
+//    }
+
     @Override
     public List<City> findAll() {
-        return (List<City>) map.values().stream().collect(Collectors.toList());
+        return cityRepository.findAll();
 
     }
 
@@ -56,5 +67,10 @@ public class CityServiceImpl implements CityService {
         }
         map.remove(id);
         return null;
+    }
+
+    @Override
+    public City findOne(Integer id) {
+        return cityRepository.getOne(id);
     }
 }

@@ -17,4 +17,6 @@ public interface CityService {
     List<City> findAll();
 
     String deleteById(Integer id);
+
+    City findOne(Integer id);
 }

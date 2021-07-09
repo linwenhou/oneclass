@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -70,5 +67,20 @@ public class MainController {
         model.addAttribute("result", s);
 
         return "list";
+    }
+
+    @RequestMapping("/list1/{id}")
+    public String list1(ModelMap model, @PathVariable("id") Integer id) {
+       City city = cityService.findOne(id);
+        model.addAttribute("city", city);
+        return "list1";
+    }
+
+    @RequestMapping("/list1")
+    public String list1(ModelMap model) {
+        List<City> city = cityService.findAll();
+//        System.out.println(city.get(0).getName());
+        model.addAttribute("cityList", city);
+        return "list1";
     }
 }

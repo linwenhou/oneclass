@@ -1,5 +1,9 @@
 package com.mashibing.springboot.firstspringboot.domain;
 
+
+import javax.persistence.*;
+
+
 /**
  * @author venvo
  * @date 2021-07-05 15:45
@@ -7,9 +11,12 @@ package com.mashibing.springboot.firstspringboot.domain;
  * @modified By
  * @version: jdk1.8
  */
-
+@Table(name = "city")
+@Entity
 public class City {
 
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
     private String name;
 

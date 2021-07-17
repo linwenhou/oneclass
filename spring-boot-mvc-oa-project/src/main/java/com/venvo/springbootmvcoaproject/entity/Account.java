@@ -21,6 +21,16 @@ public class Account implements Serializable {
 
     private String role;
 
+    private String url;
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     private static final long serialVersionUID = 1L;
 
     public Integer getId() {

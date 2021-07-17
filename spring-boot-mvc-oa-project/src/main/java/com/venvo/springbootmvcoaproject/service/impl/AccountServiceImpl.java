@@ -2,6 +2,7 @@ package com.venvo.springbootmvcoaproject.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.venvo.springbootmvcoaproject.common.RespStat;
 import com.venvo.springbootmvcoaproject.dto.AccountDTO;
 import com.venvo.springbootmvcoaproject.entity.Account;
@@ -10,7 +11,9 @@ import com.venvo.springbootmvcoaproject.mapper.AccountMapper;
 import com.venvo.springbootmvcoaproject.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.awt.peer.LightweightPeer;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,13 +44,42 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public Map findAll(int pageNum, int size) {
-        Page<Account> objects = PageHelper.startPage(pageNum, size);
-        final int pages = objects.getPages();
-        List<Account> list = accountMapper.selectByExample(new AccountExample());
-        Map result = new HashMap();
-        result.put("list", list);
-        result.put("pages", pages);
-        return result;
+    public PageInfo<Account> findAll(int pageNum, int size) {
+        PageHelper.startPage(pageNum, size);
+        AccountExample accountExample = new AccountExample();
+        List<Account> list = accountMapper.selectByExample(accountExample);
+        return new PageInfo<>(list, 2);
+    }
+
+    @Override
+    @Transactional
+    public RespStat deleteById(Integer id) {
+        int i = accountMapper.deleteByPrimaryKey(id);
+        return new RespStat(200, "删除成功！！", i);
+    }
+
+    @Override
+    public RespStat isExistLoginName(String loginName) {
+        boolean isExist = false;
+        AccountExample accountExample = new AccountExample();
+        accountExample.createCriteria().andLoginNameEqualTo(loginName);
+        final List<Account> list = accountMapper.selectByExample(accountExample);
+        if (list.size() >= 1) {
+            return new RespStat(300, "已存在", true);
+        }
+        return new RespStat(300, "", false);
+    }
+
+    @Override
+    @Transactional
+    public int registerss(Account account) {
+        return accountMapper.insert(account);
+    }
+
+    @Override
+    @Transactional
+    public int update(Account account) {
+        final int i = accountMapper.updateByPrimaryKey(account);
+        return i;
     }
 }

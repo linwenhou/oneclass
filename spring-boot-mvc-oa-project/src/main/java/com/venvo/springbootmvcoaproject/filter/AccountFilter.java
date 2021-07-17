@@ -27,7 +27,7 @@ import org.springframework.stereotype.Component;
 @WebFilter(urlPatterns = "/*")
 public class AccountFilter implements Filter {
 
-    private final String[] IGNORE_RESOURCE ={"/index","/account/validataAccount","/css/","/js/","/account/login","/images"};
+    private final String[] IGNORE_RESOURCE ={"/index","/account/validataAccount","/css/","/js/","/account/login","/images","/account/register","/account/registerss","/account/isExistLoginName"};
 
 
     @Override

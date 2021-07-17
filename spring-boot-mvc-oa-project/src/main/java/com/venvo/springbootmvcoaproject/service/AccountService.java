@@ -1,5 +1,6 @@
 package com.venvo.springbootmvcoaproject.service;
 
+import com.github.pagehelper.PageInfo;
 import com.venvo.springbootmvcoaproject.common.RespStat;
 import com.venvo.springbootmvcoaproject.dto.AccountDTO;
 import com.venvo.springbootmvcoaproject.entity.Account;
@@ -17,5 +18,13 @@ import java.util.Map;
 public interface AccountService {
     RespStat validataAccount(AccountDTO accountDTO);
 
-    Map findAll(int pageNum, int size);
+    PageInfo<Account> findAll(int pageNum, int size);
+
+    RespStat deleteById(Integer id);
+
+    RespStat isExistLoginName(String loginName);
+
+    int registerss(Account account);
+
+    int update(Account account);
 }

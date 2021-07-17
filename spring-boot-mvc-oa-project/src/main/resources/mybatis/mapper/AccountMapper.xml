@@ -239,7 +239,8 @@
       age = #{age,jdbcType=INTEGER},
       `location` = #{location,jdbcType=VARCHAR},
       `password` = #{password,jdbcType=VARCHAR},
-      `role` = #{role,jdbcType=VARCHAR}
+      `role` = #{role,jdbcType=VARCHAR},
+      url =#{url,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

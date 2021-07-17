@@ -14,7 +14,12 @@
 			<div style="width:1000px;margin:0 auto;">
  				<div style="width: 100%;height: 87px;">
  					<div style="width: 87px;height: 87px;float: left;"><img th:src="@{/images/zshLogo.png}"/></div>
- 					<span style="display: block;float: left;height: 87px;line-height: 87px;font-size: 26px;margin-left: 10px;">中国石化数据应用分析平台</span>
+ 					<span style="display: block;float: left;height: 87px;line-height: 87px;font-size: 26px;margin-left: 10px;">
+ 					
+ 					 数据应用分析平台
+ 					
+ 					
+ 					</span>
  				</div>
  			</div>
  		</div>
@@ -120,11 +125,10 @@
 					var url = "/account/validataAccount";
 					var args = {loginName:loginName,password:password};
 					$.post(url,args,function(data){
-						console.log(data.msg+"hello");
-						// console.log(data);
-
+						
 						if(data.msg == "success"){
 							// 登录成功 跳转页面
+							console.log("/index");
 							window.location.href="/index";
 							
 						}else {
@@ -133,7 +137,7 @@
 							$(".tip").css("display","block");
 						}
 						
-						// console.log(data)
+						console.log(data)
 					});
 					
 				}

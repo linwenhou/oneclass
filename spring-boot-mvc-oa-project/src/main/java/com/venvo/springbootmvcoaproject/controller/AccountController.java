@@ -5,6 +5,7 @@ import com.github.pagehelper.util.StringUtil;
 import com.venvo.springbootmvcoaproject.common.RespStat;
 import com.venvo.springbootmvcoaproject.dto.AccountDTO;
 import com.venvo.springbootmvcoaproject.entity.Account;
+import com.venvo.springbootmvcoaproject.entity.Config;
 import com.venvo.springbootmvcoaproject.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -44,6 +45,9 @@ public class AccountController {
     private String ipAndPort;
 
     @Autowired
+    Config config;
+
+    @Autowired
     AccountService accountService;
 
     @RequestMapping("/index")
@@ -52,7 +56,8 @@ public class AccountController {
     }
 
     @RequestMapping("/login")
-    public String login() {
+    public String login(Model model) {
+        model.addAttribute("config", config);
         return "account/login";
     }
 

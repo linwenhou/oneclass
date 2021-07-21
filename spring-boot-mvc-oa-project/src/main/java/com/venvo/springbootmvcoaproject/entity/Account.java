@@ -1,10 +1,10 @@
 package com.venvo.springbootmvcoaproject.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
- * @author 
- * 
+ * @author
  */
 public class Account implements Serializable {
     private Integer id;
@@ -22,6 +22,11 @@ public class Account implements Serializable {
     private String role;
 
     private String url;
+
+
+
+    private List<Role> roleList;
+    private List<Permission> permissionList;
 
     public String getUrl() {
         return url;
@@ -89,6 +94,22 @@ public class Account implements Serializable {
         this.role = role;
     }
 
+    public List<Role> getRoleList() {
+        return roleList;
+    }
+
+    public void setRoleList(List<Role> roleList) {
+        this.roleList = roleList;
+    }
+
+    public List<Permission> getPermissionList() {
+        return permissionList;
+    }
+
+    public void setPermissionList(List<Permission> permissionList) {
+        this.permissionList = permissionList;
+    }
+
     @Override
     public boolean equals(Object that) {
         if (this == that) {
@@ -102,12 +123,12 @@ public class Account implements Serializable {
         }
         Account other = (Account) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getLoginName() == null ? other.getLoginName() == null : this.getLoginName().equals(other.getLoginName()))
-            && (this.getNickName() == null ? other.getNickName() == null : this.getNickName().equals(other.getNickName()))
-            && (this.getAge() == null ? other.getAge() == null : this.getAge().equals(other.getAge()))
-            && (this.getLocation() == null ? other.getLocation() == null : this.getLocation().equals(other.getLocation()))
-            && (this.getPassword() == null ? other.getPassword() == null : this.getPassword().equals(other.getPassword()))
-            && (this.getRole() == null ? other.getRole() == null : this.getRole().equals(other.getRole()));
+                && (this.getLoginName() == null ? other.getLoginName() == null : this.getLoginName().equals(other.getLoginName()))
+                && (this.getNickName() == null ? other.getNickName() == null : this.getNickName().equals(other.getNickName()))
+                && (this.getAge() == null ? other.getAge() == null : this.getAge().equals(other.getAge()))
+                && (this.getLocation() == null ? other.getLocation() == null : this.getLocation().equals(other.getLocation()))
+                && (this.getPassword() == null ? other.getPassword() == null : this.getPassword().equals(other.getPassword()))
+                && (this.getRole() == null ? other.getRole() == null : this.getRole().equals(other.getRole()));
     }
 
     @Override
@@ -126,19 +147,35 @@ public class Account implements Serializable {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(getClass().getSimpleName());
-        sb.append(" [");
-        sb.append("Hash = ").append(hashCode());
-        sb.append(", id=").append(id);
-        sb.append(", loginName=").append(loginName);
-        sb.append(", nickName=").append(nickName);
-        sb.append(", age=").append(age);
-        sb.append(", location=").append(location);
-        sb.append(", password=").append(password);
-        sb.append(", role=").append(role);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
-        sb.append("]");
-        return sb.toString();
+        return "Account{" +
+                "id=" + id +
+                ", loginName='" + loginName + '\'' +
+                ", nickName='" + nickName + '\'' +
+                ", age=" + age +
+                ", location='" + location + '\'' +
+                ", password='" + password + '\'' +
+                ", role='" + role + '\'' +
+                ", url='" + url + '\'' +
+                ", roleList=" + roleList +
+                ", permissionList=" + permissionList +
+                '}';
     }
+
+    //    @Override
+//    public String toString() {
+//        StringBuilder sb = new StringBuilder();
+//        sb.append(getClass().getSimpleName());
+//        sb.append(" [");
+//        sb.append("Hash = ").append(hashCode());
+//        sb.append(", id=").append(id);
+//        sb.append(", loginName=").append(loginName);
+//        sb.append(", nickName=").append(nickName);
+//        sb.append(", age=").append(age);
+//        sb.append(", location=").append(location);
+//        sb.append(", password=").append(password);
+//        sb.append(", role=").append(role);
+//        sb.append(", serialVersionUID=").append(serialVersionUID);
+//        sb.append("]");
+//        return sb.toString();
+//    }
 }

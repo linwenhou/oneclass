@@ -221,4 +221,16 @@ public class AccountController {
         }
         return "/account/profile";
     }
+
+
+    @RequestMapping("/permission")
+    public String permisssion(Model map,@RequestParam(value = "pageNum", required = false, defaultValue = "1") int pageNum, @RequestParam(value = "size", required = false, defaultValue = "2") int size) {
+
+        PageInfo<Account> maps = accountService.getPermisssion(pageNum,size);
+//        PageInfo<Account> maps = accountService.findAll(pageNum, size);
+        System.out.println("PageInfo<Account>" + maps.toString());
+        map.addAttribute("page", maps);
+        return "";
+    }
+
 }

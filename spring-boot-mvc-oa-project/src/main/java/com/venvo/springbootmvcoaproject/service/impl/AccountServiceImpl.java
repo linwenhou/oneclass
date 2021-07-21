@@ -82,4 +82,13 @@ public class AccountServiceImpl implements AccountService {
         final int i = accountMapper.updateByPrimaryKey(account);
         return i;
     }
+
+    @Override
+    public PageInfo<Account> getPermisssion(int pageNum,int size) {
+        PageHelper.startPage(pageNum,size);
+
+        List<Account> list = accountMapper.getRight();
+         PageInfo<Account> accountPageInfo = new PageInfo<>(list);
+        return accountPageInfo;
+    }
 }

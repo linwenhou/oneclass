@@ -27,4 +27,6 @@ public interface AccountService {
     int registerss(Account account);
 
     int update(Account account);
+
+    PageInfo<Account> getPermisssion(int pageNum,int size);
 }

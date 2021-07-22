@@ -3,6 +3,9 @@ package com.venvo.springbootmvcoaproject.service;
 import com.github.pagehelper.PageInfo;
 import com.venvo.springbootmvcoaproject.common.RespStat;
 import com.venvo.springbootmvcoaproject.entity.Permission;
+import com.venvo.springbootmvcoaproject.entity.Role;
+
+import java.util.List;
 
 /**
  * @author venvo
@@ -21,4 +24,6 @@ public interface PermissionService {
     int update(Permission permission);
 
     int add(Permission permission);
+
+    List<Permission> findAll();
 }

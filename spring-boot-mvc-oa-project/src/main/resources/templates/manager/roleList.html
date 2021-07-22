@@ -119,45 +119,42 @@
 <table class="table table-hover">
  <tr>  
  	<th>序号</th>
- 	<th>工号</th>
- 	<th>loginName</th>
- 	<th>nickName</th>
- 	<th>age</th>
- 	<th>location</th>
- 	<th>role</th>
+ 	<th>id</th>
+ 	<th>名称</th>
  	<th>操作</th>
  </tr>
  
- <tr th:each="account : ${page.list}">
- 	<td th:text="${accountStat.count}"></td>
- 	<td th:text="${account.id}">工号</td>
- 	<td th:text="${account.loginName}">loginName</td>
- 	<td th:text="${account.nickName}">nickName</td>
- 	<td th:text="${account.age}">age</td>
- 	<td th:text="${account.location}">location</td>
- 	<td th:text="${account.role}">role</td>
+ <tr th:each="item : ${page.list}">
+ 	<td th:text="${itemStat.count}"></td>
+ 	<td th:text="${item.id}">工号</td>
+ 	<td th:text="${item.name}">loginName</td>
  	<td>
 
-
-		<a class="btn btn-danger" th:href = "@{'javascript:deleteById('+${account.id}+');'}">
-		删除
+		<a class="btn btn-danger" th:onclick="'javascript:permissionModify('+${item.id}+');'">
+		权限
 		</a>
-		
+
 		修改密码
-
-
-
 </td>
  	
  
  </tr>
 </table>
 
+
+<script type="text/javascript">
+
+	function permissionModify(id){
+		
+		window.location.href="/manager/rolePermission/"+id
+	}
+</script>
+
 <nav aria-label="Page navigation">
   <ul class="pagination">
     
     <li th:class="${page.prePage} == 0?'disabled' :'' ">
-      <a th:href="@{${page.prePage} == 0?'javascript:void(0);' :'/account/list?pageNum='+${page.prePage}}" aria-label="Previous">
+      <a th:href="@{${page.prePage} == 0?'#' :'/account/list?pageNum='+${page.prePage}}" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>

@@ -58,8 +58,14 @@ public class PermissionServiceImpl implements PermissionService {
     @Override
     @Transactional
     public int add(Permission permission) {
-        System.out.println("permission.toString()"+permission.toString());
+        System.out.println("permission.toString()" + permission.toString());
         final int insert = permissionMapper.insert(permission);
         return insert;
+    }
+
+    @Override
+    public List<Permission> findAll() {
+         PermissionExample permissionExample = new PermissionExample();
+        return permissionMapper.selectByExample(permissionExample);
     }
 }

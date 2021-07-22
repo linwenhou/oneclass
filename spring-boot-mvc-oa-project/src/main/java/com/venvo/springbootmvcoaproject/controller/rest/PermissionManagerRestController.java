@@ -1,24 +1,25 @@
-package com.venvo.springbootmvcoaproject.controller;
+package com.venvo.springbootmvcoaproject.controller.rest;
 
 import com.venvo.springbootmvcoaproject.common.RespStat;
 import com.venvo.springbootmvcoaproject.entity.Permission;
 import com.venvo.springbootmvcoaproject.service.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 /**
  * @author venvo
- * @date 2021-07-20 15:12
+ * @date 2021-07-22 08:50
  * @description
  * @modified By
  * @version: jdk1.8
  */
 @RestController
 @RequestMapping("/api/v1/manager/permission")
-public class ManagerRestController {
+public class PermissionManagerRestController {
+
     @Autowired
     PermissionService permissionService;
+
 
     @RequestMapping("/deleteById")
     @ResponseBody

@@ -8,4 +8,7 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface RoleMapper extends MyBatisBaseDao<Role, Integer, RoleExample> {
+    Role findByRoleId(int id);
+
+    void add(int[] permissions, int id);
 }

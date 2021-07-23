@@ -38,9 +38,10 @@ public class AccountServiceImpl implements AccountService {
         AccountExample.Criteria criteria = accountExample.createCriteria();
         criteria.andLoginNameEqualTo(accountDTO.getLoginName());
         criteria.andPasswordEqualTo(accountDTO.getPassword());
-        List<Account> accounts = accountMapper.selectByExample(accountExample);
+//        List<Account> accounts = accountMapper.selectByExample(accountExample);
+        Account account = accountMapper.selectByLoginNameAndPassword(accountDTO.getLoginName(),accountDTO.getPassword());
 
-        return accounts.size() == 1 ? new RespStat(200, "success", accounts.get(0)) : new RespStat(200, "fail", null);
+        return new RespStat(200, "success", account);
     }
 
     @Override
@@ -84,11 +85,11 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
-    public PageInfo<Account> getPermisssion(int pageNum,int size) {
-        PageHelper.startPage(pageNum,size);
+    public PageInfo<Account> getPermisssion(int pageNum, int size) {
+        PageHelper.startPage(pageNum, size);
 
         List<Account> list = accountMapper.getRight();
-         PageInfo<Account> accountPageInfo = new PageInfo<>(list);
+        PageInfo<Account> accountPageInfo = new PageInfo<>(list);
         return accountPageInfo;
     }
 }

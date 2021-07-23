@@ -9,6 +9,8 @@
         <result column="location" jdbcType="VARCHAR" property="location"/>
         <result column="password" jdbcType="VARCHAR" property="password"/>
         <result column="role" jdbcType="VARCHAR" property="role"/>
+        <result column="url" jdbcType="VARCHAR" property="url"/>
+
     </resultMap>
 
 
@@ -20,26 +22,60 @@
         <result column="location" jdbcType="VARCHAR" property="location"/>
         <result column="password" jdbcType="VARCHAR" property="password"/>
         <result column="role" jdbcType="VARCHAR" property="role"/>
+        <result column="url" jdbcType="VARCHAR" property="url"/>
 
 
         <collection property="roleList" ofType="com.venvo.springbootmvcoaproject.entity.Role">
 
-            <id column="rid" jdbcType="INTEGER" property="id" />
-            <result column="rname" jdbcType="VARCHAR" property="name" />
+            <id column="rid" jdbcType="INTEGER" property="id"/>
+            <result column="rname" jdbcType="VARCHAR" property="name"/>
         </collection>
         <collection property="permissionList" ofType="com.venvo.springbootmvcoaproject.entity.Permission">
 
-            <id column="pid" jdbcType="INTEGER" property="id" />
-            <result column="uri" jdbcType="VARCHAR" property="uri" />
-            <result column="pname" jdbcType="VARCHAR" property="name" />
-            <result column="c" jdbcType="BIT" property="c" />
-            <result column="r" jdbcType="BIT" property="r" />
-            <result column="u" jdbcType="BIT" property="u" />
-            <result column="d" jdbcType="BIT" property="d" />
+            <id column="pid" jdbcType="INTEGER" property="id"/>
+            <result column="uri" jdbcType="VARCHAR" property="uri"/>
+            <result column="pname" jdbcType="VARCHAR" property="name"/>
+            <result column="c" jdbcType="BIT" property="c"/>
+            <result column="r" jdbcType="BIT" property="r"/>
+            <result column="u" jdbcType="BIT" property="u"/>
+            <result column="d" jdbcType="BIT" property="d"/>
         </collection>
 
 
     </resultMap>
+
+
+    <select id="selectByLoginNameAndPassword" resultMap="accountMap">
+
+select a.id as aid,
+       a.login_name,
+       a.nick_name,
+       a.age,
+       a.location,
+       a.password,
+       a.url,
+
+       r.id as rid,
+       r.name as rname,
+       p.id as pid,
+       p.name as pname,
+       p.uri as uri,
+       p.c,
+       p.u,
+       p.r,
+       p.d
+
+       from account a
+    inner join account_role ar
+    on a.id=ar.account_id
+    inner join role r on ar.role_id = r.id
+
+left join role_permission rp on r.id = rp.role_id
+left join permission p on rp.permission_id = p.id
+where a.login_name=#{loginName}
+and a.password=#{password}
+
+    </select>
 
 
     <select id="getRight" resultMap="accountMap">
@@ -133,7 +169,7 @@ left join permission p on rp.permission_id = p.id
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, login_name, nick_name, age, `location`, `password`, `role`
+    id, login_name, nick_name, age, `location`, `password`, `role`,url
   </sql>
     <select id="selectByExample" parameterType="com.venvo.springbootmvcoaproject.mapper.AccountExample"
             resultMap="BaseResultMap">

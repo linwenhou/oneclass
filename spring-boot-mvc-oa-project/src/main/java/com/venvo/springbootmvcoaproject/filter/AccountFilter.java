@@ -1,6 +1,7 @@
 package com.venvo.springbootmvcoaproject.filter;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.venvo.springbootmvcoaproject.entity.Account;
+import com.venvo.springbootmvcoaproject.entity.Permission;
 import org.apache.catalina.connector.RequestFacade;
 import org.springframework.stereotype.Component;
 
@@ -27,7 +29,7 @@ import org.springframework.stereotype.Component;
 @WebFilter(urlPatterns = "/*")
 public class AccountFilter implements Filter {
 
-    private final String[] IGNORE_RESOURCE ={"/index","/account/validataAccount","/css/","/js/","/account/login","/images","/account/register","/account/registerss","/account/isExistLoginName"};
+    private final String[] IGNORE_RESOURCE = {"/index", "/account/validataAccount", "/css/", "/js/", "/account/login", "/images", "/account/register", "/account/registerss", "/account/isExistLoginName", "/account/error"};
 
 
     @Override
@@ -59,13 +61,25 @@ public class AccountFilter implements Filter {
             return;
         }
 
-        String servletPath = request.getServletPath();
 
+        if (!hasAnno(uri, account)) {
+            response.sendRedirect("/account/error");
+            return;
+        }
+        filterChain.doFilter(request, response);
 
-        System.out.println("account===" + account);
+    }
 
-        System.out.println("doFilter filterChain");
-        filterChain.doFilter(servletRequest, servletResponse);
+    private boolean hasAnno(String uri, Account account) {
+        final List<Permission> permissionList = account.getPermissionList();
+        for (Permission permission : permissionList) {
+            if (uri.startsWith(permission.getUri())) {
+                return true;
+            }
+        }
+
+        return false;
+
     }
 
     private boolean canPassIgnore(String uri) {

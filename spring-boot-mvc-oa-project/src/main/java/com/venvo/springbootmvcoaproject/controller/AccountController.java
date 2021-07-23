@@ -41,8 +41,7 @@ import java.util.Map;
 public class AccountController {
     @Value("${file.upload.path}")
     private String uploadPath;
-    @Value("${file.ipandport}")
-    private String ipAndPort;
+
 
     @Autowired
     Config config;
@@ -72,6 +71,7 @@ public class AccountController {
         }
 
         RespStat respStat = accountService.validataAccount(accountDTO);
+        System.out.println("respStat.getData()=" + respStat.getData());
         if (respStat.getMsg().equals("success")) {
             HttpSession httpSession = request.getSession();
             httpSession.setAttribute("account", respStat.getData());
@@ -199,15 +199,10 @@ public class AccountController {
         System.out.println("file:" + filename.getOriginalFilename());
         try {
 
-//            File path = new File(ResourceUtils.getURL("classpath:").getPath());
-//            File upload = new File(path.getAbsolutePath(), "static/upload/");
-
-//            System.out.println("upload:" + upload);
-
 
             HttpSession session = request.getSession();
             filename.transferTo(new File(uploadPath + filename.getOriginalFilename()));
-            String url = ipAndPort + filename.getOriginalFilename();
+            String url = filename.getOriginalFilename();
             Account account = (Account) session.getAttribute("account");
             account.setUrl(url);
             accountService.update(account);
@@ -224,13 +219,19 @@ public class AccountController {
 
 
     @RequestMapping("/permission")
-    public String permisssion(Model map,@RequestParam(value = "pageNum", required = false, defaultValue = "1") int pageNum, @RequestParam(value = "size", required = false, defaultValue = "2") int size) {
+    public String permisssion(Model map, @RequestParam(value = "pageNum", required = false, defaultValue = "1") int pageNum, @RequestParam(value = "size", required = false, defaultValue = "2") int size) {
 
-        PageInfo<Account> maps = accountService.getPermisssion(pageNum,size);
+        PageInfo<Account> maps = accountService.getPermisssion(pageNum, size);
 //        PageInfo<Account> maps = accountService.findAll(pageNum, size);
         System.out.println("PageInfo<Account>" + maps.toString());
         map.addAttribute("page", maps);
         return "";
+    }
+
+    @RequestMapping("/error")
+    public String error() {
+
+        return "/error";
     }
 
 }

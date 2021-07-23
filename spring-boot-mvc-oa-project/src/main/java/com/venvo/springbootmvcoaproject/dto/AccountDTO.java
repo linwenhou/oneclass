@@ -21,4 +21,19 @@ public class AccountDTO {
     @Length(min = 3,message = "密码长度要至少3位")
     private String password;
 
+    public String getLoginName() {
+        return loginName;
+    }
+
+    public void setLoginName(String loginName) {
+        this.loginName = loginName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

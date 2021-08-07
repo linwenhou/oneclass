@@ -2,11 +2,17 @@ package com.venvo.springbootmvcoaproject.controller;
 
 import com.github.pagehelper.PageInfo;
 import com.github.pagehelper.util.StringUtil;
+import com.github.tobato.fastdfs.FdfsClientConfig;
+import com.github.tobato.fastdfs.domain.fdfs.MetaData;
+import com.github.tobato.fastdfs.domain.fdfs.StorePath;
+import com.github.tobato.fastdfs.service.DefaultFastFileStorageClient;
 import com.venvo.springbootmvcoaproject.common.RespStat;
 import com.venvo.springbootmvcoaproject.dto.AccountDTO;
 import com.venvo.springbootmvcoaproject.entity.Account;
 import com.venvo.springbootmvcoaproject.entity.Config;
 import com.venvo.springbootmvcoaproject.service.AccountService;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -25,9 +31,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @author venvo
@@ -42,6 +51,8 @@ public class AccountController {
     @Value("${file.upload.path}")
     private String uploadPath;
 
+    @Autowired
+    private DefaultFastFileStorageClient fc;
 
     @Autowired
     Config config;
@@ -201,10 +212,34 @@ public class AccountController {
 
 
             HttpSession session = request.getSession();
-            filename.transferTo(new File(uploadPath + filename.getOriginalFilename()));
-            String url = filename.getOriginalFilename();
+
             Account account = (Account) session.getAttribute("account");
-            account.setUrl(url);
+
+
+            //fdfs
+            // 元数据
+            Set<MetaData> metaDataSet = new HashSet<MetaData>();
+            metaDataSet.add(new MetaData("Author", "yimingge"));
+            metaDataSet.add(new MetaData("CreateDate", "2016-01-05"));
+
+
+            try {
+                StorePath uploadFile = null;
+                uploadFile = fc.uploadFile(filename.getInputStream(), filename.getSize(), FilenameUtils.getExtension(filename.getOriginalFilename()), metaDataSet);
+
+//                account.setPassword(password);
+                account.setUrl(uploadFile.getPath());
+
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+
+//            filename.transferTo(new File(uploadPath + filename.getOriginalFilename()));
+//            String url = filename.getOriginalFilename();
+//            Account account = (Account) session.getAttribute("account");
+//            account.setUrl(url);
             accountService.update(account);
 
         } catch (IllegalStateException e) {

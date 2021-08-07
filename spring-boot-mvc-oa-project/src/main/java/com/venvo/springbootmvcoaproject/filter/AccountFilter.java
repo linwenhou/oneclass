@@ -61,11 +61,11 @@ public class AccountFilter implements Filter {
             return;
         }
 
-
-        if (!hasAnno(uri, account)) {
-            response.sendRedirect("/account/error");
-            return;
-        }
+//
+//        if (!hasAnno(uri, account)) {
+//            response.sendRedirect("/account/error");
+//            return;
+//        }
         filterChain.doFilter(request, response);
 
     }

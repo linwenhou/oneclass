@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>修改密码</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common/common.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common/login.css}">
+
+    <!-- 最新的 Bootstrap 核心 css 文件 -->
+    <!-- 在url上 使用 @标签 可以帮我们 自动加上 contextpath -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script th:src="@{/js/common/jquery-3.4.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+<h1>修改密码</h1>
+<form>
+
+    <div class="form-group">
+        <label for="oldPass">Password</label>
+        <input type="password" class="form-control" id="oldPass" placeholder="原密码">
+    </div>
+
+    <div class="form-group">
+        <label for="newPass">Password</label>
+        <input type="password" class="form-control" id="newPass" placeholder="新密码">
+    </div>
+    <div class="form-group">
+        <label for="newPassAgain">Password</label>
+        <input type="password" class="form-control" id="newPassAgain" placeholder="确认新密码">
+    </div>
+    <button type="submit" class="btn btn-default" onclick="updatePass()">Submit</button>
+</form>
+</body>
+<script type="text/javascript">
+
+    function updatePass() {
+        console.log("修改密码");
+        var oldPass = $("#oldPass").val();
+        var newPass = $("#newPass").val();
+        var newPassAgain = $("#newPassAgain").val();
+        console.log(oldPass+":::"+newPassAgain)
+        if (newPass != newPassAgain) {
+            alert("两次输入的新密码不一致，请重新输入");
+            return;
+        }
+
+        var url = "/account/update";
+        var args = {oldPass: oldPass, newPass: newPass};
+        $.post(url, args, function (data) {
+            if (data.data == 1) {
+                alert("修改成功");
+            } else {
+                alert(data.msg);
+
+            }
+        });
+    }
+</script>
+</html>

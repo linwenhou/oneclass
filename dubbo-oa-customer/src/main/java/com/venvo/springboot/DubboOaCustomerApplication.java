@@ -6,7 +6,8 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
-@ServletComponentScan(basePackages = "com.venvo.springboot.listener")
+@ServletComponentScan(basePackages = {"com.venvo.springboot.listener", "com.venvo.springboot.filter"})
+
 public class DubboOaCustomerApplication {
 
     public static void main(String[] args) {

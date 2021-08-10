@@ -190,16 +190,16 @@ public class WXServiceController {
             }
 
 
-            logger.info(TokenManager.getDefaultToken());
+            logger.info("token="+TokenManager.getDefaultToken());
 
-//            XMLTextMessage xmlTextMessage2 = new XMLTextMessage(eventMessage.getFromUserName(), eventMessage.getToUserName(),
-//                    "请先<a href='http://weixin.duozuiyu.com/profile/my'>完善一下信息</a>");
-//            xmlTextMessage2.outputStreamWrite(outputStream);
+            XMLTextMessage xmlTextMessage2 = new XMLTextMessage(eventMessage.getFromUserName(), eventMessage.getToUserName(),
+                    "请先<a href='http://venvo.nat300.top/profile/my'>完善一下信息</a>");
+            xmlTextMessage2.outputStreamWrite(outputStream);
 
 
-			XMLImageMessage xmlImageMessage = new XMLImageMessage(eventMessage.getFromUserName(),eventMessage.getToUserName() , "3bhMcjmw8SMbpYH3FbU5JwtTXF2osbmrnM-b7hHWkVfnP3bFVVItln9IQz0s4Nek");
-
-			xmlImageMessage.outputStreamWrite(outputStream);
+//			XMLImageMessage xmlImageMessage = new XMLImageMessage(eventMessage.getFromUserName(),eventMessage.getToUserName() , "3bhMcjmw8SMbpYH3FbU5JwtTXF2osbmrnM-b7hHWkVfnP3bFVVItln9IQz0s4Nek");
+//
+//			xmlImageMessage.outputStreamWrite(outputStream);
             return;
         }
     }

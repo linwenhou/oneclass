@@ -10,6 +10,8 @@ import com.venvo.springboot.dto.AccountDTO;
 import com.venvo.springboot.entity.Account;
 import com.venvo.springboot.entity.Config;
 import com.venvo.springboot.service.IAccountService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.dubbo.config.annotation.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -42,6 +45,7 @@ import java.util.Set;
  */
 @RequestMapping("/account")
 @Controller
+@Api(value = "用户权限管理",tags={"用户操作接口"})
 public class AccountController {
 //    @Value("${file.upload.path}")
 //    private String uploadPath;
@@ -61,6 +65,7 @@ public class AccountController {
     }
 
     @RequestMapping("/login")
+    @ApiOperation(value = "用户登录")
     public String login(Model model) {
         model.addAttribute("config", config);
         return "account/login";
@@ -86,7 +91,7 @@ public class AccountController {
 
     }
 
-    @RequestMapping("/list")
+    @GetMapping("/list")
     public String list(ModelMap map, @RequestParam(value = "pageNum", required = false, defaultValue = "1") int pageNum, @RequestParam(value = "size", required = false, defaultValue = "2") int size) {
 
 //        List<Account> list = accountService.findAll(pageNum, size);

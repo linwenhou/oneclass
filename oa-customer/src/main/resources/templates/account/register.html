@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <title>登录</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common/common.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common/login.css}">
+
+    <!-- 最新的 Bootstrap 核心 css 文件 -->
+    <!-- 在url上 使用 @标签 可以帮我们 自动加上 contextpath -->
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script th:src="@{/js/common/jquery-3.4.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+
+</head>
+<body>
+<form method="post">
+    <div class="form-group">
+        <label for="loginName">login name</label>
+        <h1 id="isExist"></h1>
+        <input onblur="isExistLoginName()" type="text" class="form-control" id="loginName" placeholder="loginName">
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" id="password" placeholder="Password">
+    </div>
+    <!--    <div class="form-group">-->
+    <!--        <label for="exampleInputFile">File input</label>-->
+    <!--        <input type="file" id="exampleInputFile">-->
+    <!--        <p class="help-block">Example block-level help text here.</p>-->
+    <!--    </div>-->
+    <!--    <div class="checkbox">-->
+    <!--        <label>-->
+    <!--            <input type="checkbox"> Check me out-->
+    <!--        </label>-->
+    <!--    </div>-->
+    <button type="submit" class="btn btn-default" onclick="register()">Submit</button>
+</form>
+</body>
+<script type="text/javascript">
+
+    function register() {
+        // alert("hello"+$("#loginName").val());
+        var loginName = $("#loginName").val();
+        var password = $("#password").val();
+        console.log("loginName" + loginName);
+        console.log("password" + password);
+        // alert(loginName);
+        // 确认删除
+        var url = "/account/registerss";
+        var args = {loginName: loginName, password: password};
+        // RESPStat 类型的结果
+        $.post(url, args, function (data) {
+            console.log(data);
+            if (data.code == 300) {
+                //删除成功，刷新页面
+                alert("注册成功")
+                confirm(data.msg);
+                // window.location.reload();
+            } else {
+                alert(data.msg)
+            }
+        });
+
+    }
+
+    function isExistLoginName() {
+        var loginName = $("#loginName").val();
+        var url = "/account/isExistLoginName";
+        var args = {loginName: loginName};
+        $.post(url, args, function (data) {
+            if (data.data == true) {
+                $('#isExist').html(data.msg);
+            } else {
+                $('#isExist').html(data.msg);
+
+            }
+        });
+
+    }
+</script>
+</html>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="tess4jdemo" />
+        <module name="zookeeper-study" />
+        <module name="spring-boot-mvc-oa-project" />
+        <module name="springbootmvcthree" />
+        <module name="dubbo-oa-customer" />
+        <module name="dubbo-customer" />
+        <module name="springboot" />
+        <module name="redis-demo" />
+        <module name="FirstSpringboot" />
+        <module name="mybatis-generator-gui" />
+        <module name="dubbo-oa-proivder" />
+        <module name="dubbo-proivder" />
+        <module name="springbootmvcfours" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="dubbo-customer" target="1.8" />
+      <module name="dubbo-oa-customer" target="1.8" />
+      <module name="dubbo-oa-proivder" target="1.8" />
+      <module name="dubbo-proivder" target="1.8" />
+      <module name="dubbo01" target="1.8" />
+      <module name="FirstSpringboot" target="1.8" />
+      <module name="mybatis-generator-gui" target="1.8" />
+      <module name="redis-demo" target="1.8" />
+      <module name="spring-boot-mvc-oa-project" target="1.8" />
+      <module name="springboot" target="1.8" />
+      <module name="springbootmvcfours" target="1.8" />
+      <module name="springbootmvcthree" target="1.8" />
+      <module name="tess4jdemo" target="1.5" />
+      <module name="zookeeper-study" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="FirstSpringboot" options="-parameters" />
+      <module name="dubbo-customer" options="-parameters" />
+      <module name="dubbo-oa-customer" options="-parameters" />
+      <module name="dubbo-oa-proivder" options="-parameters" />
+      <module name="dubbo-proivder" options="-parameters" />
+      <module name="dubbo01" options="-parameters" />
+      <module name="redis-demo" options="-parameters" />
+      <module name="spring-boot-mvc-oa-project" options="-parameters" />
+      <module name="springboot" options="-parameters" />
+      <module name="springbootmvcfours" options="-parameters" />
+      <module name="springbootmvcthree" options="-parameters" />
+      <module name="zookeeper-study" options="-parameters" />
+    </option>
+  </component>
+</project>

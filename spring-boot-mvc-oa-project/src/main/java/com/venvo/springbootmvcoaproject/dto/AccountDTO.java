@@ -6,6 +6,8 @@ import javax.validation.constraints.NotBlank;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
+import java.io.Serializable;
+
 /**
  * @author venvo
  * @date 2021-07-14 17:00
@@ -14,7 +16,7 @@ import org.hibernate.validator.constraints.Length;
  * @version: jdk1.8
  */
 @Data
-public class AccountDTO {
+public class AccountDTO implements Serializable {
     @NotBlank(message = "账号不能为空")
     private String loginName;
     @NotBlank(message = "密码不能为空")

@@ -23,16 +23,20 @@
       <change afterPath="$PROJECT_DIR$/../.idea/libraries/Maven__org_jboss_jboss_vfs_3_2_15_Final.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_1_4_GA.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_30.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../eureka/src/main/java/com/venvo/eureka/csrf/WebSecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../eureka/src/main/resources/application-7901.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../eureka/src/main/resources/application-7902.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../eureka/src/main/resources/application-7903.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../eureka/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../eureka/.mvn/wrapper/MavenWrapperDownloader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../eureka/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../eureka/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../eureka/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../eureka/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../eureka/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../eureka/src/main/java/com/venvo/eureka/EurekaApplication.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../tess4jdemo/pom.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../tess4jdemo/src/main/java/com/venvo/TessImage.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../tess4jdemo/src/main/java/com/venvo/bbb.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../tess4jdemo/src/main/resources/bbb.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../tess4jdemo/tess4jdemo.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../dubbo-oa-proivder/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../dubbo-oa-proivder/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../spring-boot-mvc-oa-project/src/main/java/com/venvo/springbootmvcoaproject/common/RespStat.java" beforeDir="false" afterPath="$PROJECT_DIR$/../spring-boot-mvc-oa-project/src/main/java/com/venvo/springbootmvcoaproject/common/RespStat.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../spring-boot-mvc-oa-project/src/main/java/com/venvo/springbootmvcoaproject/dto/AccountDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../spring-boot-mvc-oa-project/src/main/java/com/venvo/springbootmvcoaproject/dto/AccountDTO.java" afterDir="false" />
@@ -294,16 +298,23 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1630831290453</updated>
-      <workItem from="1630831312240" duration="5383000" />
+      <workItem from="1630831312240" duration="6009000" />
     </task>
+    <task id="LOCAL-00001" summary="【+】eureka client">
+      <created>1630842150872</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1630842150872</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5383000" />
+    <option name="totallyTimeSpent" value="6009000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-29" y="23" width="1680" height="1027" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Designer" />
       <window_info id="Image Layers" />
@@ -320,11 +331,11 @@
       <window_info anchor="bottom" id="Messages" weight="0.31428573" />
       <window_info anchor="bottom" id="Java Enterprise" />
       <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
+      <window_info active="true" anchor="bottom" id="Version Control" visible="true" weight="0.32941177" />
       <window_info anchor="bottom" id="MyBatis Log" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.47379678" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.47379678" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -345,6 +356,36 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER">
+                <list>
+                  <option value="0" />
+                  <option value="1" />
+                  <option value="2" />
+                  <option value="3" />
+                </list>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="【+】eureka client" />
+    <option name="LAST_COMMIT_MESSAGE" value="【+】eureka client" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/test/java/com/venvo/api/apinetcar/ApiNetcarApplicationTests.java">
